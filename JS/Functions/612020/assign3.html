@@ -1,0 +1,41 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container bg-info w-50 d-flex flex-column align-items-center rounded mt-5">
+        <div class="card w-50 text-center mt-5">
+            <div class="card-header" onclick="show1()">Card 1</div>
+            <div class="card-body d-none" id="body1">
+                <p>Bootstrap requires the use of the HTML5 doctype. Without it, you’ll see some funky incomplete
+                    styling, but including it shouldn’t cause any considerable hiccups</p>
+            </div>
+        </div>
+        <div class="card w-50 text-center mt-5">
+            <div class="card-header" onclick="show2()">Card 2</div>
+            <div class="card-body d-none" id="body2">
+                <p>Bootstrap requires the use of the HTML5 doctype. Without it, you’ll see some funky incomplete
+                    styling, but including it shouldn’t cause any considerable hiccups</p>
+            </div>
+        </div>
+        <div class="card w-50 text-center mt-5 mb-5">
+            <div class="card-header" onclick="show3()">Card 3</div>
+            <div class="card-body d-none" id="body3">
+                <p>Bootstrap requires the use of the HTML5 doctype. Without it, you’ll see some funky incomplete
+                    styling, but including it shouldn’t cause any considerable hiccups</p>
+            </div>
+        </div>
+    </div>
+<script>
+    function show1(){
+        document.getElementById("body1").classList.toggle("d-none")
+    }
+    function show2(){
+        document.getElementById("body2").classList.toggle("d-none")
+    }
+    function show3(){
+        document.getElementById("body3").classList.toggle("d-none")
+    }
+</script>
+</body>
+</html>

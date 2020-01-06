@@ -1,0 +1,60 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <div>
+        <div class="btn btn-warning float-right mr-5 mt-5 mb-5" onclick="hide()">Hide</div>
+        <div class="btn btn-success float-right mr-3 mt-5 mb-5" onclick="show()">Show</div>
+    </div>
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>S.Id</th>
+                    <th>S.Name</th>
+                    <th>M1</th>
+                    <th>M2</th>
+                    <th>M3</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Sai</td>
+                    <td>80</td>
+                    <td>70</td>
+                    <td>90</td>
+                    <td>240</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ram</td>
+                    <td>90</td>
+                    <td>95</td>
+                    <td>80</td>
+                    <td>265</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Jai</td>
+                    <td>95</td>
+                    <td>95</td>
+                    <td>100</td>
+                    <td>290</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script>
+    function hide(){
+        document.getElementsByClassName("table")[0].classList.add("d-none")
+    }
+    function show(){
+        document.getElementsByClassName("table")[0].classList.remove("d-none")
+    }
+    
+</script>
+</body>
+</html>

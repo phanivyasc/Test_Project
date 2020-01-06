@@ -1,0 +1,38 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/> 
+</head>
+<body>
+    <div class="container bg-info rounded w-25">
+        <div class="loginForm">
+            <h2 class="mt-5 pt-5">Login Form</h2>
+            <div class="form-group w-75">
+                <label>User Name</label>
+                <input class="form-control" id="username" onkeyup="userCheck()">
+                <label>Password</label>
+                <input class="form-control" id="password" onkeyup="passCheck()">
+                <button class="btn btn-success mt-4 mb-5" id="submit">Login</button>
+                <button class="btn btn-danger mt-4 mb-5" id="reset" onclick="reset()">Reset</button>
+            </div>
+        </div>
+    </div>
+<script>
+    function userCheck(){
+        var out=document.getElementById("username").value
+        if(isNaN(out)){
+            console.log("Please enter numbers in this field")
+        }
+    }
+    function passCheck(){
+        var out=document.getElementById("password").value
+        if(isNaN(out)!=true){
+            console.log("Please enter password in text only")
+        }
+    }
+    function reset(){
+        document.getElementById("username").value=""
+        document.getElementById("password").value=""
+    }
+</script>
+</body>
+</html>
