@@ -1,0 +1,55 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<style>
+    .close{
+        right: 25px;
+        top: 7px;
+        font-size:20px;
+    }
+</style>
+<body>
+    <div class="container-fluid">
+        <div id="alert" class="bg-danger text-white text-center d-none position-relative">
+        <h3 class="d-inline-block">Please enter valid UserName and Password</h3>
+        <span onclick="hide()" class="close position-absolute text-white">X</span>
+        </div>
+
+        <div class="loginForm w-25 bg-info text-center mx-auto mt-5">
+            <h4 class="pt-5">Login Form</h4>
+            <div class="form-group mt-3">
+                <label>User Name</label>
+                <input type="text" class="form-control w-50 mx-auto" placeholder="Enter Username" id="user" />
+                <label>Password</label>
+                <input type="password" class="form-control w-50 mx-auto" placeholder="Enter Password" id="password" />
+                <button class="btn btn-success mt-4 mb-4" id="submit" onclick="check()">Submit</button>
+                <button class="btn btn-danger mt-4 mb-4" id="reset" onclick="reset()">Reset</button>
+            </div>
+        </div>
+
+    </div>
+<script>
+    function check(){
+        var a=document.getElementById("user").value
+        var b=document.getElementById("password").value
+        if(a=="" || b==""){
+            document.getElementById("alert").classList.remove("d-none")
+        }
+        else{
+            document.getElementById("alert").classList.add("d-none")
+        }
+    }
+
+    function reset(){
+        document.getElementById("user").value = ""
+        document.getElementById("password").value = ""
+        document.getElementById("alert").classList.add("d-none")
+    }
+    
+    function hide(){
+        document.getElementById("alert").classList.add("d-none")
+    }
+</script>
+</body>
+</html>
