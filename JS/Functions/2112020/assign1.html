@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <table class="table">
+            <thead>
+                <tr onclick=check(this)>
+                    <th>S.No</th>
+                    <th>S.Id</th>
+                    <th>S.Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="row1" onclick=check(row1)>
+                    <td>1</td>
+                    <td>1001</td>
+                    <td>Sai</td>
+                </tr>
+                <tr id="row2" onclick=check(row2)>
+                    <td>2</td>
+                    <td>1002</td>
+                    <td>Ram</td>
+                </tr>
+                <tr id="row3" onclick=check(row3)>
+                    <td>3</td>
+                    <td>1003</td>
+                    <td>Raj</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script>
+    function check(a){
+        var b=a.className
+        var c=b.indexOf("bg-success")
+        if(c == -1){
+            a.classList.add("bg-success")
+        }
+        else{
+            a.classList.remove("bg-success")
+        } 
+        console.log(a)
+   }
+</script>
+</body>
+</html>
