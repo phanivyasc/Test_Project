@@ -1,0 +1,49 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class = "container-fluid">
+
+        <div class = "header d-flex justify-content-between align-items-center bg-primary">
+            <img src = "vbmlogo.jpg" width=230 height=70 class = "pl-3 rounded"/>
+            <a href = "" style = "text-decoration:none;color:white;margin-right:15px;">Logout</a>
+        </div>
+
+        <button class = "btn btn-success float-right mt-5 mr-3 mb-5" onclick=gen()>Generate</button>
+
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th>S.Id</th>
+                    <th>S.Name</th>
+                    <th>Total</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+
+        <div class = "footer fixed-bottom text-center">Copyright VBM InfoTech</div>
+    </div>
+
+<script>
+    function gen(){
+        //document.getElementById("tbody1").classList.toggle("d-none")
+        var y = document.getElementById("tbody1").className.indexOf("d-none")
+        if(y == -1){
+            document.getElementById("tbody1").classList.add("d-none")
+        }
+        else{
+            document.getElementById("tbody1").classList.remove("d-none")
+        }
+        var a = ""
+        var Students = [{Id:101,Name:"Sai",Total:450,Grade:'A'},{Id:102,Name:"Ram",Total:385,Grade:'B'},{Id:103,Name:"Jai",Total:495,Grade:'A'},{Id:101,Name:"Sai",Total:450,Grade:'A'},{Id:102,Name:"Ram",Total:385,Grade:'B'},{Id:103,Name:"Jai",Total:495,Grade:'A'}]
+        Students.forEach(function(val,ind){
+            a =a + "<tr>"+"<td>"+val.Id+"</td>"+"<td>"+val.Name+"</td>"+"<td>"+val.Total+"</td>"+"<td>"+val.Grade+"</td>"+"</tr>"
+        })
+        document.getElementById("tbody1").innerHTML = a
+    }
+</script>
+</body>
+</html>
