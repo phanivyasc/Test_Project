@@ -10,8 +10,20 @@
             <a href = "" style = "text-decoration:none;color:white;margin-right:15px;">Logout</a>
         </div>
 
-        <button class = "btn btn-success float-right mt-5 mr-3 mb-5" onclick=gen()>Generate</button>
+        <div class = "form-group mt-5 bg-light text-center">
+            <label>S.Id</label>
+            <input type="number" placeholder="enter student id" id="sId"/>
+            <label>S.Name</label>
+            <input type="text" placeholder="enter student name" id="sName"/>
+            <label>Total</label>
+            <input type="number" placeholder="enter total" id="sTotal"/>
+            <label>Grade</label>
+            <input type="text" placeholder="enter student grade" id="sGrade"/>
+            <button class = "btn btn-info" onclick=add()>Add</button>
+        </div>
 
+        <button class = "btn btn-success float-right mt-5 mr-3 mb-5" onclick=gen()>Generate</button>
+                
         <table class = "table table-striped">
             <thead>
                 <tr>
@@ -28,6 +40,9 @@
     </div>
 
 <script>
+
+    var Students = [{Id:101,Name:"Sai",Total:450,Grade:'A'},{Id:102,Name:"Ram",Total:385,Grade:'B'},{Id:103,Name:"Jai",Total:495,Grade:'A'}]
+
     function gen(){
         //document.getElementById("tbody1").classList.toggle("d-none")
         var y = document.getElementById("tbody1").className.indexOf("d-none")
@@ -38,12 +53,22 @@
             document.getElementById("tbody1").classList.remove("d-none")
         }
         var a = ""
-        var Students = [{Id:101,Name:"Sai",Total:450,Grade:'A'},{Id:102,Name:"Ram",Total:385,Grade:'B'},{Id:103,Name:"Jai",Total:495,Grade:'A'},{Id:101,Name:"Sai",Total:450,Grade:'A'},{Id:102,Name:"Ram",Total:385,Grade:'B'},{Id:103,Name:"Jai",Total:495,Grade:'A'}]
         Students.forEach(function(val,ind){
-            a =a + "<tr>"+"<td>"+val.Id+"</td>"+"<td>"+val.Name+"</td>"+"<td>"+val.Total+"</td>"+"<td>"+val.Grade+"</td>"+"</tr>"
+            a = a + "<tr>"+"<td>"+val.Id+"</td>"+"<td>"+val.Name+"</td>"+"<td>"+val.Total+"</td>"+"<td>"+val.Grade+"</td>"+"</tr>"
         })
         document.getElementById("tbody1").innerHTML = a
     }
+
+    /*function add(){
+        var a = document.getElementById("sId").value
+        var b = document.getElementById("sName").value
+        var c = document.getElementById("sTotal").value
+        var d = document.getElementById("sGrade").value
+        var e = "Id:"+a+","+"Name:"+b+","+"Total:"+c+","+"Grade:"+d
+        //var e = '{"Id":,"Name":'b',"Total":'c',"Grade":'d'}'
+        Students.push(e)
+    }
+    */
 </script>
 </body>
 </html>
