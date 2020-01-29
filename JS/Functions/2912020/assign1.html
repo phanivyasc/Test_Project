@@ -1,0 +1,85 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class = "container-fluid">
+
+        <div class = "header d-flex justify-content-between align-items-center bg-primary">
+            <img src = "vbmlogo.jpg" width=230 height=70 class = "pl-3 rounded"/>
+            <a href = "" style = "text-decoration:none;color:white;margin-right:15px;">Logout</a>
+        </div>
+
+        <button class = "btn btn-success float-right mt-5 mr-3 mb-5" onclick=gen()>Generate</button>
+                
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+
+        <div class = "footer fixed-bottom text-center">Copyright VBM InfoTech</div>
+    </div>
+
+<script>
+    
+    var personArray = []
+
+    var Person = function(fName,lName,age,add,city,state,country,phone,email){
+        this.fName = fName;
+        this.lName = lName;
+        this.age = age;
+        this.add = add;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.phone = phone;
+        this.email = email;
+        this.getFullName = function(){
+            return this.fName+this.lName
+        }
+        this.getEmail = function(){
+            return this.email
+        }
+        this.getAdd = function(){
+            return this.add
+        }
+    }
+    
+    var per1 = new Person("Sai1","Ram1",30,"SR Nagar","Hyd","TS","Ind",9849444591,"sairam1@yahoo.com")
+    var per2 = new Person("Sai2","Ram2",31,"Ameerpet","Hyd","TS","Ind",9849444592,"sairam2@yahoo.com")
+    var per3 = new Person("Sai3","Ram3",32,"Koti","Hyd","TS","Ind",9849444593,"sairam3@yahoo.com")
+    var per4 = new Person("Sai4","Ram4",33,"DSNR","Hyd","TS","Ind",9849444594,"sairam4@yahoo.com")
+    var per5 = new Person("Sai5","Ram5",33,"KPHB","Hyd","TS","Ind",9849444595,"sairam5@yahoo.com")
+
+    personArray.push(per1)
+    personArray.push(per2)
+    personArray.push(per3)
+    personArray.push(per4)
+    personArray.push(per5)
+
+    function gen(){
+
+    document.getElementById("tbody1").classList.toggle("d-none")
+    var a = ""
+    personArray.forEach(function(val,ind){
+            a = a + "<tr>"+"<td>"+val.fName+"</td>"+"<td>"+val.lName+"</td>"+"<td>"+val.age+"</td>"+"<td>"+val.getAdd()+"</td>"+
+                "<td>"+val.city+"</td>"+"<td>"+val.state+"</td>"+"<td>"+val.country+"</td>"+"<td>"+val.phone+"</td>"+
+                "<td>"+val.getEmail()+"</td>"+"</tr>"
+        })
+        document.getElementById("tbody1").innerHTML = a
+    }
+</script>
+</body>
+</html>
