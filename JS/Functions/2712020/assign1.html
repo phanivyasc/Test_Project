@@ -40,10 +40,12 @@
     </div>
 
 <script>
+// Creates table entries based on the values stored in an array
 
-    var Students = [{Id:101,Name:"Sai",Total:450,Grade:'A'},{Id:102,Name:"Ram",Total:385,Grade:'B'},{Id:103,Name:"Jai",Total:495,Grade:'A'}]
+    var Students = [{Id:101,Name:"Sai",Total:450,Grade:'A'},{Id:102,Name:"Ram",Total:385,Grade:'B'},
+    {Id:103,Name:"Jai",Total:495,Grade:'A'}] // Array of student objects
 
-    function gen(){
+    function gen(){     //Generates table from Students array
         //document.getElementById("tbody1").classList.toggle("d-none")
         var y = document.getElementById("tbody1").className.indexOf("d-none")
         if(y == -1){
@@ -59,16 +61,15 @@
         document.getElementById("tbody1").innerHTML = a
     }
 
-    /*function add(){
+    function add(){ //Adds entries to Students array from the input fields
         var a = document.getElementById("sId").value
         var b = document.getElementById("sName").value
         var c = document.getElementById("sTotal").value
         var d = document.getElementById("sGrade").value
-        var e = "Id:"+a+","+"Name:"+b+","+"Total:"+c+","+"Grade:"+d
-        //var e = '{"Id":,"Name":'b',"Total":'c',"Grade":'d'}'
+        var e = {Id:a,Name:b,Total:c,Grade:d}
         Students.push(e)
     }
-    */
+    
 </script>
 </body>
 </html>
