@@ -1,0 +1,90 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="header d-flex justify-content-between align-items-center bg-primary">
+            <img src="vbmlogo.jpg" width=200 height=50 class="pl-3 rounded" />
+            <a href="" style="text-decoration:none;color:white;margin-right:15px;">Logout</a>
+        </div>
+
+        <button class="btn btn-success mt-3" onclick=gen()>Generate</button>
+
+    <div id="cards" class="d-none">
+        <div class="card-deck mt-4">
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead1"></div>
+                <div class="card-body text-center"><div id="cBody1" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot1"></div>
+            </div>
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead2"></div>
+                <div class="card-body text-center"><div id="cBody2" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot2"></div>
+            </div>
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead3"></div>
+                <div class="card-body text-center"><div id="cBody3" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot3"></div>
+            </div>
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead4"></div>
+                <div class="card-body text-center"><div id="cBody4" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot4"></div>
+            </div>
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead5"></div>
+                <div class="card-body text-center"><div id="cBody5" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot5"></div>
+            </div>
+        </div>
+        <div class="card-deck mt-3">
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead6"></div>
+                <div class="card-body text-center"><div id="cBody6" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot6"></div>
+            </div>
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead7"></div>
+                <div class="card-body text-center"><div id="cBody7" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot7"></div>
+            </div>
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead8"></div>
+                <div class="card-body text-center"><div id="cBody8" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot8"></div>
+            </div>
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead9"></div>
+                <div class="card-body text-center"><div id="cBody9" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot9"></div>
+            </div>
+            <div class="card border border-success">
+                <div class="card-header text-center" id="cHead10"></div>
+                <div class="card-body text-center"><div id="cBody10" class="p-3 border border-danger"></div></div>
+                <div class="card-footer text-center" id="cFoot10"></div>
+            </div>
+        </div>
+    </div>
+
+<script>
+//Dynamically create Bootstrap Card content
+        function gen() {
+            var http = new XMLHttpRequest()
+            var x = http.open("GET", "https://jsonplaceholder.typicode.com/users")
+            http.send(x)
+            http.responseType = "json"
+            http.onload = function () {
+                var arr = http.response
+                arr.forEach(function (val, ind) {
+                document.getElementById("cHead" + (ind + 1)).innerHTML = val.name
+                document.getElementById("cBody" + (ind + 1)).innerHTML = val.address.street + "," + val.address.suite + "," + val.address.city
+                document.getElementById("cFoot" + (ind + 1)).innerHTML = val.email
+            })
+        }
+        document.getElementById("cards").classList.toggle("d-none")
+    }
+</script>
+</body>
+</html>
