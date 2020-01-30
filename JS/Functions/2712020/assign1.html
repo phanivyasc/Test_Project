@@ -22,7 +22,7 @@
             <button class = "btn btn-info" onclick=add()>Add</button>
         </div>
 
-        <button class = "btn btn-success float-right mt-5 mr-3 mb-5" onclick=gen()>Generate</button>
+        <button class = "btn btn-success float-right mt-5 mr-3 mb-5" onclick=show()>Generate</button>
                 
         <table class = "table table-striped">
             <thead>
@@ -45,8 +45,8 @@
     var Students = [{Id:101,Name:"Sai",Total:450,Grade:'A'},{Id:102,Name:"Ram",Total:385,Grade:'B'},
     {Id:103,Name:"Jai",Total:495,Grade:'A'}] // Array of student objects
 
-    function gen(){     //Generates table from Students array
-        //document.getElementById("tbody1").classList.toggle("d-none")
+    function show(){ //Toggle display table body
+        gen()
         var y = document.getElementById("tbody1").className.indexOf("d-none")
         if(y == -1){
             document.getElementById("tbody1").classList.add("d-none")
@@ -54,6 +54,10 @@
         else{
             document.getElementById("tbody1").classList.remove("d-none")
         }
+    }
+
+    function gen(){     //Generates table from Students array
+        //document.getElementById("tbody1").classList.toggle("d-none")
         var a = ""
         Students.forEach(function(val,ind){
             a = a + "<tr>"+"<td>"+val.Id+"</td>"+"<td>"+val.Name+"</td>"+"<td>"+val.Total+"</td>"+"<td>"+val.Grade+"</td>"+"</tr>"
@@ -68,6 +72,7 @@
         var d = document.getElementById("sGrade").value
         var e = {Id:a,Name:b,Total:c,Grade:d}
         Students.push(e)
+        gen()
     }
     
 </script>
