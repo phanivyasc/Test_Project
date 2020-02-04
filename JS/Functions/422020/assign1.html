@@ -1,0 +1,45 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="header d-flex justify-content-between align-items-center bg-primary">
+            <img src="vbmlogo.jpg" width=230 height=70 class="pl-3 rounded" />
+            <a href="" style="text-decoration:none;color:white;margin-right:15px;">Logout</a>
+        </div>
+
+        <button class="btn btn-success float-right mt-5 mr-3 mb-5" onclick=gen()>Generate</button> 
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+    </div>
+
+<script>
+    function gen(){
+        var http=new XMLHttpRequest()
+        http.open("GET","https://jsonplaceholder.typicode.com/users")
+        http.responseType="json"
+        http.send()
+        http.onload=function(){
+            var arr=http.response
+            var str=""
+            arr.forEach(function(val,ind){
+                str += "<tr><td>"+"<a href=user.html"+"?qId="+val.id+">"+val.id+"</td><td>"+val.name+"</td><td>"+val.username+"</td><td>"+val.email+"</td><td>"+val.phone+"</td></tr>"
+            })
+        document.getElementById("tbody1").innerHTML=str
+        }
+    }
+</script>
+</body>
+</html>
