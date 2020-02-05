@@ -1,0 +1,137 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <style>
+        span{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid pl-0 pr-0">
+        <div class="header d-flex justify-content-between align-items-center bg-primary">
+            <img src="vbmlogo.jpg" width=200 height=50 class="pl-3 rounded" />
+            <a href="" style="text-decoration:none;color:white;margin-right:15px;">Logout</a>
+        </div>
+    </div>
+    <div class="header2 bg-info d-flex justify-content-around">
+        <a href="#" class="text-white">Users</a>
+        <a href="#"class="text-white">Services</a>
+        <a href="#"class="text-white">About</a>
+    </div>
+
+    <div class="container w-50 bg-secondary rounded">
+        <h4 class="text-center mt-3 pt-3 text-white">Registration Form</h4>
+    
+        <div class="d-flex justify-content-around">
+            <span>User ID</span>
+            <span>Name</span>
+        </div>
+        <div class="d-flex justify-content-around">
+            <input type="number" placeholder="enter user ID" class="form-control w-25" id="uId"/>
+            <input type="text" placeholder="enter user Name" class="form-control w-25" id="name"/>
+    
+        </div>
+        <div class="d-flex justify-content-around">
+            <span>User Name</span>
+            <span>Email</span>
+        </div>
+        <div class="d-flex justify-content-around">
+            <input type="text" placeholder="enter user UserName" class="form-control w-25" id="userName"/>
+            <input type="email" placeholder="enter user Email" class="form-control w-25" id="email"/>
+    
+        </div>
+        <div class="d-flex justify-content-around">
+            <span>Phone</span>
+            <span>Website</span>
+        </div>
+        <div class="d-flex justify-content-around">
+            <input type="number" placeholder="enter user PhoneNumber" class="form-control w-25" id="phone"/>
+            <input type="text" placeholder="enter user Website" class="form-control w-25" id="webaddr"/>
+        </div>
+        
+        <div class="text-center text-white">Address</div>
+
+        <div class="d-flex justify-content-around">
+            <span>Street</span>
+            <span>Suite</span>
+        </div>
+        <div class="d-flex justify-content-around">
+            <input type="text" placeholder="street name" class="form-control w-25" id="street"/>
+            <input type="text" placeholder="apts/suite name" class="form-control w-25" id="suite"/>
+        </div>
+        <div class="d-flex justify-content-around">
+            <span>City</span>
+            <span>ZipCode</span>
+        </div>
+        <div class="d-flex justify-content-around pb-5">
+            <select class="w-25 form-control" id="city">
+                <option selected>Hyderabad</option>
+                <option >Bangalore</option>
+                <option >Chennai</option>
+                <option >Mumbai</option>
+                <option >Delhi</option>
+                <option >Noida</option>
+            </select>
+            <input type="number" placeholder="zipcode" class="form-control w-25" id="zip"/>
+        </div>
+        <div class="d-flex justify-content-center pb-4">
+            <button class="btn btn-success mr-5" onclick=submit()>Submit</button>
+            <button class="btn btn-danger ml-5" onclick=cancel()>Cancel</button>
+        </div>
+    </div>
+<script>
+    var obj={"id":0,"name":"","username":"","email":"","address":{"street":"","suite":"","city":"","zipcode":0},"phone":0,"website":""}
+    
+    function submit(){
+        obj.id=document.getElementById("uId").value
+        obj.name=document.getElementById("name").value
+        obj.username=document.getElementById("userName").value
+        obj.email=document.getElementById("email").value
+        obj.address.street=document.getElementById("street").value
+        obj.address.suite=document.getElementById("suite").value
+        obj.address.city=document.getElementById("city").value
+        obj.address.zipcode=document.getElementById("zip").value
+        obj.phone=document.getElementById("phone").value
+        obj.website=document.getElementById("webaddr").value 
+
+        /*
+        var obj={
+            "id":0,
+            "email":"",
+            "first_name":"",
+            "last_name":"",
+        }
+
+        function submit(){
+            obj.id=document.getElementById("uId").value
+            obj.email=document.getElementById("email").value
+            obj.first_name=document.getElementById("name").value
+            obj.last_name=document.getElementById("userName").value
+        */
+        var http=new XMLHttpRequest()
+        //http.open("POST","https://reqres.in/api/users")
+        http.open("POST","https://jsonplaceholder.typicode.com/users")
+        http.responseType="json"
+        http.send(obj)
+        http.onload=function(){
+            var x=http.response
+            console.log(x)
+        }  
+    }
+
+    function cancel(){
+        document.getElementById("uId").value=""
+        document.getElementById("name").value=""
+        document.getElementById("userName").value=""
+        document.getElementById("email").value=""
+        document.getElementById("street").value=""
+        document.getElementById("suite").value=""
+        document.getElementById("city").value=""
+        document.getElementById("zip").value=""
+        document.getElementById("phone").value=""
+        document.getElementById("webaddr").value=""
+    }
+</script>
+</body>
+</html>
