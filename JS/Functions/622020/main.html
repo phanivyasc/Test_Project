@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main Page</title>
+    <style>
+        i{
+            color:black;
+        }
+        .llist{
+            color:white;
+            text-decoration: none!important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container-fluid pl-0 pr-0">
+        <div class="header1 d-flex justify-content-between bg-dark align-items-center">
+            <img src="vbmlogo.jpg" class="ml-3 rounded" width="200" height="60">
+            <a href="#" class="text-white pr-3">Logout</a>
+        </div>
+    </div>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-1 bg-dark text-decoration-none">
+                <ul class="list-group mt-5" style="height:517px;">
+                    <li class="list-group-item bg-dark border border-dark"><a href="#" class="llist">Home</a></li>
+                    <li class="list-group-item bg-dark border border-dark"><a href="#" class="llist">Services</a></li>
+                    <li class="list-group-item bg-dark border border-dark"><a href="#" class="llist">About</a></li>
+                </ul>
+                </div>
+                <div class="col-md-11">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Email</th>
+                                <th>User Name</th>
+                                <th>Phone</th>
+                                <th>City</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tBody1"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+<script>
+    var http=new XMLHttpRequest()
+    http.open("GET","https://jsonplaceholder.typicode.com/users")
+    http.responseType="json"
+    http.send()
+    http.onload=function(){
+        var x=http.response
+        var str=""
+        x.forEach(function(val,ind){
+            str += "<tr><td>"+val.id+"</td><td>"+val.email+"</td><td>"+val.username+"</td><td>"+val.phone+"</td><td>"+val.address.city+"</td><td>"
+            +"<a href='view.html?id="+val.id+"'><i class='fa fa-eye mr-3'></i></a><a href='edit.html'><i class='fa fa-pencil mr-3'></a></i><i class='fa fa-trash' onclick='del("+val.id+")'></i>"+"</td></tr>"
+        })
+    document.getElementById("tBody1").innerHTML=str
+    }
+
+    function del(a){
+    var http1=new XMLHttpRequest()
+    http1.open("DELETE","https://jsonplaceholder.typicode.com/users/"+a)
+    http1.responseType="json"
+    http1.send()
+    http1.onload=function(){
+        var x=http1.response
+        console.log(x)
+    }
+    }
+</script>
+</body>
+</html>
