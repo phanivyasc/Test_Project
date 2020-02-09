@@ -1,0 +1,214 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main Page</title>
+    <style>
+        i {
+            color: black;
+        }
+
+        .llist {
+            color: white;
+            text-decoration: none !important;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container-fluid pl-0 pr-0">
+        <div class="header1 d-flex justify-content-between bg-dark align-items-center">
+            <img src="vbmlogo.jpg" class="ml-3 rounded" width="200" height="60">
+            <a href="#" class="text-white pr-3">Logout</a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1 bg-dark text-decoration-none">
+                <ul class="list-group mt-5" style="height:517px;">
+                    <li class="list-group-item bg-dark border border-dark"><a href="#" class="llist">Home</a></li>
+                    <li class="list-group-item bg-dark border border-dark"><a href="#" class="llist">Services</a></li>
+                    <li class="list-group-item bg-dark border border-dark"><a href="#" class="llist">About</a></li>
+                </ul>
+            </div>
+            <div class="col-md-11">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>User Name</th>
+                            <th>Phone</th>
+                            <th>City</th>
+                            <th>ZipCode</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tBody1"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">VIEW MODE</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header text-center bg-danger text-white" id="cHead1"></div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center">
+                                <h6>ID:</h6>
+                                <div id="cId" class="ml-2"></div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <h6>Email:</h6>
+                                <div id="cEmail" class="ml-2"></div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <h6>Phone:</h6>
+                                <div id="cPhone" class="ml-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var http = new XMLHttpRequest()
+        http.open("GET", "https://jsonplaceholder.typicode.com/users")
+        http.responseType = "json"
+        http.send()
+        http.onload = function () {
+            var x = http.response
+            var str = ""
+            x.forEach(function (val, ind) {
+                str += "<tr id=" + val.id + "><td>" + val.id + "</td><td>" + val.email + "</td><td>" + val.username + "</td><td>" + val.phone + "</td><td>" + val.address.city + "</td><td>" + val.address.zipcode + "</td><td>"
+                    + "<span data-toggle='modal' data-target='#exampleModal' onclick=view(" + val.id + ")><i class='fa fa-eye mr-3'></i></span><span onclick=edit(" + val.id + ")><i class='fa fa-pencil mr-3'></span></i><i class='fa fa-trash' onclick='del(" + val.id + ")'></i>" + "</td></tr>"
+            })
+            document.getElementById("tBody1").innerHTML = str
+        }
+
+        function del(a) {
+            var http1 = new XMLHttpRequest()
+            http1.open("DELETE", "https://jsonplaceholder.typicode.com/users/" + a)
+            http1.responseType = "json"
+            http1.send()
+            http1.onload = function () {
+                var x = http1.response
+                console.log(x)
+            }
+        }
+
+        function edit(a) {
+            var http = new XMLHttpRequest()
+            http.open("GET", "https://jsonplaceholder.typicode.com/users/" + a)
+            http.responseType = 'json'
+            http.send()
+            http.onload = function () {
+                var x = http.response
+                /*document.getElementById("mId").value=x.id
+                document.getElementById("mEmail").value=x.email
+                document.getElementById("mUsername").value=x.username
+                document.getElementById("mPhone").value=x.phone
+                document.getElementById("mCity").value=x.address.city
+                document.getElementById("mZip").value=x.address.zipcode*/
+
+                document.getElementById(x.id).innerHTML = "<tr><td>" + x.id + "</td><td><input type='text' id='eEmail'/>" + "</td><td><input type='text' id='eUserName'/>" + "</td><td><input type='text' id='ePhone'/>" + "</td><td><input type='text' id='eCity'/>" + "</td><td><input type='text' id='eZip'/>" + "</td><td>"
+                    + "<button class='btn btn-success btn-sm mr-1 text-white' onclick=update()>Update</button><button class='btn btn-danger btn-sm text-white' onclick=rollback(" + x.id + ")>Cancel</button>" + "</td></tr>"
+
+                document.getElementById("eEmail").value = x.email
+                document.getElementById("eUserName").value = x.username
+                document.getElementById("ePhone").value = x.phone
+                document.getElementById("eCity").value = x.address.city
+                document.getElementById("eZip").value = x.address.zipcode
+
+            }
+        }
+
+        function update() {
+            /*var obj = {
+                "email": document.getElementById("mEmail").value,
+                "username": document.getElementById("mUsername").value,
+                "phone": document.getElementById("mPhone").value,
+                "address": {
+                    "city": document.getElementById("mCity").value,
+                    "zipcode": document.getElementById("mZip").value,
+                }
+            }*/
+
+            var obj = {
+                "email": document.getElementById("eEmail").value,
+                "username": document.getElementById("eUserName").value,
+                "phone": document.getElementById("ePhone").value,
+                "address": {
+                    "city": document.getElementById("eCity").value,
+                    "zipcode": document.getElementById("eZip").value,
+                }
+            }
+            var http = new XMLHttpRequest()
+            http.open("POST", "https://jsonplaceholder.typicode.com/users")
+            http.responseType = 'json'
+            http.send(obj)
+            http.onload = function () {
+                var x = http.response
+                console.log(x)
+            }
+        }
+
+        function rollback(a) {
+            var http = new XMLHttpRequest()
+            http.open("GET", "https://jsonplaceholder.typicode.com/users/" + a)
+            http.responseType = 'json'
+            http.send()
+            http.onload = function () {
+                var x = http.response
+                document.getElementById(x.id).innerHTML = "<tr id=" + x.id + "><td>" + x.id + "</td><td>" + x.email + "</td><td>" + x.username + "</td><td>" + x.phone + "</td><td>" + x.address.city + "</td><td>" + x.address.zipcode + "</td><td>"
+                    + "<span data-toggle='modal' data-target='#exampleModal'><i class='fa fa-eye mr-3'></i></span><span onclick=edit(" + x.id + ")><i class='fa fa-pencil mr-3'></span></i><i class='fa fa-trash' onclick='del(" + x.id + ")'></i>" + "</td></tr>"
+
+            }
+        }
+
+        function view(a) {
+            var http = new XMLHttpRequest()
+            http.open("GET", "https://jsonplaceholder.typicode.com/users/" + a)
+            http.responseType = 'json'
+            http.send()
+            http.onload = function () {
+                var x = http.response
+                document.getElementById("cHead1").innerHTML = x.name
+                document.getElementById("cId").innerHTML = x.id
+                document.getElementById("cEmail").innerHTML = x.email
+                document.getElementById("cPhone").innerHTML = x.phone
+            }
+        }
+
+    </script>
+</body>
+</html>
