@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main Page</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css"/>
+        <style>
+            .class1{
+                font-weight:bolder;
+                color:white;
+                background-color:slategray;
+                text-align:center;    
+            }
+            ul{
+                list-style-type:none;
+            }
+        </style>
+</head>
+<body>
+    <div class="container-fluid pl-0 pr-0">
+            <div class="header1 mb-4 d-flex justify-content-between bg-primary align-items-center">
+                <img src="vbmlogo.jpg" class="ml-3 rounded" width="150" height="40">
+                <a href="#" class="text-white pr-3">Logout</a>
+            </div>
+
+            <h5 class="text-center bg-info text-white w-50 m-auto">jQuery UI - "addClass" method implementation</h5>
+            <div class="btn btn-success mt-3 ml-5 d-inline-block" id="show">Show</div>
+
+    </div>
+    <div class="container w-50 mb-5">
+        <div class="card mt-3">
+            <div class="card-header bg-danger text-center text-white" id="cHead1">Card1</div>
+            <div class="card-body" id="cBody1">In this example clicking on "Show" button applies background color to card body. Also changes content & text color</div>
+        </div>
+    </div>
+
+    <h5 class="text-center bg-info text-white w-50 m-auto">jQuery UI - "Blind Effect" method implementation</h5>
+    <div class="btn btn-success mt-3 ml-5 d-inline-block" id="blind">Show (Blind)</div>
+    <div class="container w-50 mt-5">
+        <div class="card mt-3">
+            <div class="card-header bg-danger text-center text-white" id="cHead2">Card2</div>
+            <div class="card-body" id="cBody2">Clicking on "Show(Blind) button adds Blind effect to this card body</div>
+        </div>
+    </div>
+    
+<script>
+    $("#show").click(function(){
+        $("#cBody1").html(x)
+        $("#cBody1").addClass("class1",500,"swing")
+    })
+
+    $("#blind").click(function(){
+        $("#cBody2").toggle("blind")
+    })
+
+    var x = `
+        <ul>
+            <li>Font Color changes to White</li>
+            <li>Font Weight changes to Bold</li>
+            <li>Background color slowly transitions to darkslategrey</li>
+        </ul>
+    `
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Menus</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css" />
+    <style>
+        .ui-menu{ 
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid pl-0 pr-0">
+        <div class="header1 d-flex justify-content-between bg-primary align-items-center">
+            <img src="vbmlogo.jpg" class="ml-3 rounded" width="150" height="40">
+            <a href="#" class="text-white pr-3">Logout</a>
+        </div>
+
+        <div class="navBar text-white mt-5">
+                <ul id="navigate1">
+                        <li><div>Navigate</div> 
+                            <ul>
+                                <li><div>Interactions</div>
+                                    <ul>
+                                        <li><div id="id1-1">Draggable</div></li>
+                                        <li>-</li>
+                                        <li><div id="id1-2">Droppable</div></li>
+                                        <li>-</li>
+                                        <li><div id="id1-3">Resizable</div></li>
+                                        <li>-</li>
+                                        <li><div id="id1-4">Selectable & Sortable</div></li>
+                                    </ul>
+                                </li>
+                                <li>-</li>
+                                <li><div>Widgets</div>
+                                    <ul>
+                                        <li><div id="id2-1">Accordion</div></li>
+                                        <li>-</li>
+                                        <li><div id="id2-2">Autocomplete</div></li>
+                                        <li>-</li>
+                                        <li><div id="id2-3">Datepicker,Spinner,Dialog</div></li>
+                                        <li>-</li>
+                                        <li><div id="id2-4">Tooltip</div></li>
+                                    </ul>
+                                </li>
+                                <li>-</li>
+                                <li><div>Effects</div>
+                                    <ul>
+                                        <li><div id="id3-1">Blind</div></li>
+                                        <li>-</li>
+                                        <li><div id="id3-2">Bounce</div></li>
+                                        <li>-</li>
+                                        <li><div id="id3-3">Clip</div></li>
+                                    </ul>
+                                </li>
+                                <li>-</li>
+                                <li><div>Web</div>
+                                    <ul>
+                                        <li><div id="id4-1">Google</div></li>
+                                        <li>-</li>
+                                        <li><div id="id4-2">Hotmail</div></li>
+                                        <li>-</li>
+                                        <li><div id="id4-3">Facebook</div></li>
+                                    </ul>
+                                </li>
+                                <li class="ui-state-disabled"><div>About</div></li>
+                                <li><div><a href="#">Logout</a></div></li>
+                            </ul>
+                        </li>
+                </ul>
+            </div>
+        
+<script>
+    $("#navigate1").menu(/*{
+        position:{my:"bottom",at:"bottom bottom-33"},
+        icons: { submenu: " ui-icon-caret-1-s" },
+    }*/)
+
+    $("#id1-1").click(function(){
+        window.location = 'draggable.html';
+    })
+    $("#id1-2").click(function(){
+        window.location = 'droppable.html';
+    })
+    $("#id1-3").click(function(){
+        window.location = 'resizable.html';
+    })
+    $("#id1-4").click(function(){
+        window.location = 'selectable & sortable.html';
+    })
+    $("#id2-1").click(function(){
+        window.location = 'accordian.html';
+    })
+    $("#id2-2").click(function(){
+        window.location = 'autocomplete.html';
+    })
+    $("#id2-3").click(function(){
+        window.location = 'datepicker.html';
+    })
+    $("#id2-4").click(function(){
+        window.location = 'tooltip.html';
+    })
+    $("#id3-1").click(function(){
+        window.location = 'blind.html';
+    })
+    $("#id3-2").click(function(){
+        window.location = 'bounce.html';
+    })
+    $("#id3-3").click(function(){
+        window.location = 'clip.html';
+    })
+    $("#id4-1").click(function(){
+        window.location = 'http://www.google.com';
+    })
+    $("#id4-2").click(function(){
+        window.location = 'http://www.hotmail.com';
+    })
+    $("#id4-3").click(function(){
+        window.location = 'http://www.facebook.com';
+    })
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Date Picker & Spinner</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css" />
+    <style>
+        .second_row{
+            margin-top:6%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid pl-0 pr-0">
+        <div class="header1 mb-4 d-flex justify-content-between bg-primary align-items-center">
+            <img src="vbmlogo.jpg" class="ml-3 rounded" width="150" height="40">
+            <a href="#" class="text-white pr-3">Logout</a>
+        </div>
+
+        <h5 class="text-center bg-info text-white w-50 m-auto">jQuery UI - "DatePicker, Spinner & Dialog" method implementation</h5>
+
+        <div class="row mr-0 ml-0 mt-5">
+            <div class="col-md-6">
+                <h5>Select Date</h5>
+                <input type="text" id="datePick"/>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-success" onclick=clk()>Show selected date</button>
+                <div class="bg-danger h-100 w-50 mt-3 text-white">
+                    <div id="op"></div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="second_row row mr-0 ml-0">
+                <div class="col-md-6">
+                    <div>No.of days to be added to the selected day</div>
+                    <input id="spinner"/>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-success" id="calc">Calculate</button>
+                    <div class="bg-danger h-100 w-50 mt-3 text-white">
+                            <div id="op1"></div>
+                        </div>
+                </div>
+            </div>
+    </div>
+
+    <div id="dialog" title="Calculated Date">
+        
+    </div>
+        
+    
+
+<script>
+
+    $("#spinner").tooltip();
+    
+    $("#dialog").dialog({
+        autoOpen:false
+    })
+
+    $("#spinner").spinner()
+    
+
+    $("#datePick").datepicker(
+        /*dateFormat:"dd-MM-yy",
+        onSelect:function(a,b){
+            //console.log(b.currentDay)
+            var x=$("#spinner").spinner("value")
+            var a = $("#datePick").datepicker("getDate")
+            a.setDate(a.getDate()+x) 
+        } */
+    )    
+    
+    function clk(){
+        var x = document.getElementById("datePick").value
+        //console.log(x)
+        //console.log($("#spinner").spinner("value"))
+        document.getElementById("op").innerHTML=x
+    }
+    
+    $("#calc").click(function(){
+            var x=$("#spinner").spinner("value")
+            var a = $("#datePick").datepicker("getDate")
+            a.setDate(a.getDate()+x)
+            $("#op1").html(a)
+            $("#dialog").html(a)
+            $("#dialog").dialog("open")
+    })
+
+</script>
+</body>
+
+</html>
